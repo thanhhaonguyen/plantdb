@@ -42,17 +42,28 @@ export const importByTypeFromExcel = async (TypeID, fileBuffer) => {
     const t = await sequelize.transaction();
     try {
         for (const row of rows) {
+            if (!row["Species Name"] || row["Species Name"].toString().trim() === "") {
+                continue;
+            }
+
             // tạo species
             // tạm thời cho state = 1, sau này nên đổi thành 0 và chờ duyệt thành 1 mới xuất hiện trên web
 
             const temp_state = 1;
-            const species = await speciesRepository.createSpecies(row["Origin"], temp_state, TypeID, { transaction: t});
+            const species = await speciesRepository.createSpecies(
+                row["Origin"], 
+                temp_state, 
+                TypeID, 
+                { transaction: t}
+            );
 
             // tạo species name. tạm thời mặc định nó là tên chính (primary = 1), 
             // sau này người dùng cần dùng chức năng chỉnh sửa để đổi tên chính nếu muốn
-            await speciesNamesRepository.createSpeciesNames(row["Species Name"], 1, species.id, { transaction: t});
-
-            console.log(`Species name: ${row["Species Name"]}, origin: ${row["Origin"]}`)
+            await speciesNamesRepository.createSpeciesNames(
+                row["Species Name"], 
+                1, 
+                species.id, 
+                { transaction: t});
 
             // tạo properties value
             for (const prop of properties){
@@ -60,11 +71,23 @@ export const importByTypeFromExcel = async (TypeID, fileBuffer) => {
                 if (cellValue  == null) continue;
 
                 if (prop.value_type === "num") {
-                    await propertiesValueRepository.createPropertiesValue(Number(cellValue), species.id, prop.id, null, {transaction: t});
+                    await propertiesValueRepository.createPropertiesValue(
+                        Number(cellValue), 
+                        species.id, 
+                        prop.id, 
+                        null, 
+                        {transaction: t}
+                    );
                           
                 } else if (prop.value_type === "enum") {
                     const enum_id = enumMap[prop.name][cellValue];
-                    await propertiesValueRepository.createPropertiesValue(null, species.id, prop.id, enum_id, {transaction: t});
+                    await propertiesValueRepository.createPropertiesValue(
+                        null, 
+                        species.id, 
+                        prop.id, 
+                        enum_id, 
+                        {transaction: t}
+                    );
 
                 }
             }

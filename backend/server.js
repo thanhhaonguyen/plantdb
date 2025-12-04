@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 // Cấu hình CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Cho phép frontend truy cập
+  origin: process.env.CORS_ORIGIN || "", // Cho phép frontend truy cập
   credentials: true, // Cho phép gửi cookies và headers xác thực
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
