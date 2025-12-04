@@ -20,7 +20,7 @@ server {
 
     # Upstream API server configuration
     # upstream pointing to the backend service defined in docker-compose
-    set $upstream_database http://plantdb_mysql_workbench:3000;
+    set $upstream_database http://plantdb_adminer:8080;
 
     location / {
         # Headers are set to pass the original request information

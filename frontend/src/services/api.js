@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Cấu hình base URL cho backend
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://plantdb-api.lab.io.vn';
 
 // Tạo instance axios với cấu hình mặc định
 const api = axios.create({
