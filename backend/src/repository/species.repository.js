@@ -78,9 +78,8 @@ export const getSpeciesInfo = async (SpeciesID) => {
     }
 }
 
-export const createSpecies = async () => {
-    // đầu vào nên là json?
-    // tạo primary name
 
-    // lần lượt thêm thuộc tính của species
+export const createSpecies = async (origin, state, type_id) => {
+    const result = await Species.create({origin, state, type_id});
+    return result
 }

@@ -21,3 +21,12 @@ export const getSpeciesInfo = async (SpeciesID) => {
         throw error;
     }
 }
+
+export const createSpecies = async (origin, state, TypeID) => {
+    try {
+        return await speciesRepository.createSpecies(origin, state, TypeID)
+    } catch (error) {
+        console.log(error);
+        throw error
+    }
+}

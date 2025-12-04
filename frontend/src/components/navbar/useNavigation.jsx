@@ -1,16 +1,9 @@
 import { useState, useEffect } from 'react';
+import { defaultNavigation } from './config';
 
 export const useNavigation = () => {
-    const [navigation, setNavigation] = useState([
-        { name: 'Trang chủ', href: '/'},
-        { 
-            name: 'Nhóm cây trồng',
-            href: '/groups',
-            children: []
-        },
-        // { name: 'Sâu bệnh hại', href: '/bug'}
-    ]);
-
+    const [navigation, setNavigation] = useState(defaultNavigation);
+    
     const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState({});
 
     useEffect(() => {
