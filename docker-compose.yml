@@ -2,6 +2,7 @@ services:
   # MySQL Database
   plantdb_mysql:
     image: mysql:8.0.44-oraclelinux9
+    platform: linux/arm64/v8
     container_name: plantdb_mysql
     profiles: ["system"]
     restart: always
