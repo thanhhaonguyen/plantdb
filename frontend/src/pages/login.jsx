@@ -53,6 +53,7 @@ export default function LoginForm() {
     }
 
     try {
+      {/*
       const res = await axios.post("/api/user/register", {
         username,
         email,
@@ -62,6 +63,16 @@ export default function LoginForm() {
       toast.success("Đăng ký thành công! Vui lòng đăng nhập.");
       setTimeout(() => {
         setActiveTab("login");
+        setUsername("");
+        setPassword("");
+        setRepeatPassword("");
+        setEmail("");
+      }, 2000);
+      */}
+
+      toast.error("Chức năng tạm thời không khả dụng!");
+      setTimeout(() => {
+        setActiveTab("register");
         setUsername("");
         setPassword("");
         setRepeatPassword("");
