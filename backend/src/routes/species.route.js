@@ -4,10 +4,10 @@ import { upload } from "../middlewares/upload.js";
 
 const router = express.Router();
 
-router.get("/type/:TypeID", speciesController.getSpeciesList);
-router.get("/:SpeciesID", speciesController.getSpeciesInfo);
+router.get("/", speciesController.getSpeciesList);
+router.get("/:speciesId", speciesController.getSpeciesInfo);
 
-router.get("/get-template/:TypeID", speciesController.getTemplate);
-router.post("/import/:TypeID", upload.single("file"), speciesController.importExcel)
+router.get("/template/download", speciesController.getTemplate);
+router.post("/import", upload.single("file"), speciesController.importExcel)
 
 export default router;

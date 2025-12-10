@@ -7,7 +7,7 @@ import SpeciesListPage from './pages/speciesListPage';
 import SpeciesPage from './pages/speciesPage';
 import Dashboard from './pages/dashboard/dashboard2';
 import ProtectedRoute from './components/protectedRoute';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,7 +20,14 @@ export default function App() {
             <Router>
                 <NavBar />
                 <Routes>
-                    <Route path='/' element={<Home />} />
+
+                    {/* 
+                    Tạm thời điều hướng trang chủ là danh sách giống cây đậu
+                    <Route path='/' element={<Home />} /> 
+                    */}
+                    
+                    <Route path='/' element={<Navigate to="/species-type/1" replace />} />
+
                     <Route path='/groups' element={<GroupsListPage />} />
                     <Route path='/bug' element={<Bug />} />
                     <Route path='/group/:groupID' element={<PlantTypePage />} />

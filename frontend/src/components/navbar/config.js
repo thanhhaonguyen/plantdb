@@ -12,8 +12,8 @@ export const defaultNavigation = [
 */}
 
 export const defaultNavigation = [
-    { name: 'Trang chủ', href: '/'},
-    { name: 'Ngũ cốc', href: '/group/1'},
-    { name: 'Cây họ đậu', href: '/group/7'}
-]
+    { name: 'Đậu nành', href: '/species-type/1'},
+    { name: 'Lúa', href: '/species-type/2'},
+];
+
 

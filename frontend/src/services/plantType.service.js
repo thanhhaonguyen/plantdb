@@ -1,9 +1,14 @@
 import api from "./api";
+import { getPlantTypesAPI } from "./config.service";
 
-export const getAllTypeByGroup = async (groupID, page, limit) => {
-    const reponse = await api.get(`/api/planttype/${groupID}`, {
-        params: {page, limit}
+export const getAllTypeByGroup = async (groupId, page, limit) => {
+    const response = await api.get(getPlantTypesAPI, {
+        params: {
+            groupId, 
+            page: page ?? 1, 
+            limit: limit ?? 12
+        }
     });
-    const data = reponse.data;
+    const data = response.data;
     return data;
 }

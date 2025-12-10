@@ -3,6 +3,6 @@ import * as plantTypeController from "../controllers/plantType.controller.js";
 
 const router = express.Router();
 
-router.get("/:GroupId", plantTypeController.getPlantTypeByGroupId);
+router.get("/", plantTypeController.getPlantTypeByGroupId);
 
 export default router;

@@ -3,7 +3,6 @@ function Bug() {
 
   return (
     <>
-      <SlickSlider />
     </>
   )
 }

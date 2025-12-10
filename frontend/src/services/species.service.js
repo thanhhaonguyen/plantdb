@@ -1,15 +1,20 @@
 import api from "./api";
+import { getSpeciesAPI } from "./config.service";
 
-export const getSpeciesInformation = async (speciesID) => {
-    const reponse = await api.get(`/api/species/${speciesID}`);
-    const data = reponse.data;
+export const getSpeciesInformation = async (speciesId) => {
+    const response = await api.get(`${getSpeciesAPI}/${speciesId}`);
+    const data = response.data;
     return data;
 }
 
-export const getSpeciesListByType = async (typeID, page, limit) => {
-    const reponse = await api.get(`/api/species/type/${typeID}`, {
-        params: {page, limit}
+export const getSpeciesListByType = async (typeId, page, limit) => {
+    const response = await api.get(getSpeciesAPI, {
+        params: {
+            typeId, 
+            page: page ?? 1, 
+            limit: limit ?? 12
+        }
     });
-    const data = reponse.data;
+    const data = response.data;
     return data;
 }

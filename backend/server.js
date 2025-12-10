@@ -24,7 +24,7 @@ app.use(express.json());
 
 //routes
 app.use("/api/groups", groupRoutes);
-app.use("/api/planttype", plantTypeRroutes);
+app.use("/api/plant-types", plantTypeRroutes);
 app.use("/api/species", speciesRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/properties", propertiesRoutes);

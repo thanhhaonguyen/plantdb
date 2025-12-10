@@ -2,9 +2,16 @@ import * as plantTypeService from "../services/plantType.service.js";
 
 export const getPlantTypeByGroupId = async (req, res) => {
     try {
-        const {GroupId} = req.params;
+        const {groupId} = req.query;
+        if (!groupId) {
+            return res.status(400).json({
+                message: "Thiếu groupId"
+            });
+        };
+
         const { page, limit } = req.query;
-        const data = await plantTypeService.getAllPlantTypeByGroupId(GroupId, page, limit);
+
+        const data = await plantTypeService.getAllPlantTypeByGroupId(groupId, page, limit);
         res.json(data);
     } catch (error) {
         console.log(error);

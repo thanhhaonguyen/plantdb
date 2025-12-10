@@ -4,9 +4,13 @@ import * as templateService from "../services/importSpeciesByExcel/template.serv
 
 export const getSpeciesList = async (req, res) => {
     try {
-        const {TypeID} = req.params;
-        const { page, limit } = req.query;
-        const data = await speciesService.getSpeciesList(TypeID, page, limit);
+        const { typeId, page, limit } = req.query;
+        if (!typeId) {
+            return res.status(400).json({
+                message: "Thiếu typeId"
+            })
+        };
+        const data = await speciesService.getSpeciesList(typeId, page, limit);
         res.json(data);
     } catch (error) {
         console.log(error);
@@ -16,11 +20,13 @@ export const getSpeciesList = async (req, res) => {
 
 export const getSpeciesInfo = async (req, res) => {
     try {
-        const {SpeciesID} = req.params;
-        const data = await speciesService.getSpeciesInfo(SpeciesID);
+        const {speciesId} = req.params;
+
+        const data = await speciesService.getSpeciesInfo(speciesId);
         if (!data) {
-            return res.status(400).json({message: "Data not found"});
-        }
+            return res.status(400).json({message: "Không tìm thấy dữ liệu"});
+        };
+
         res.json(data);
     } catch (error) {
         console.log(error);
@@ -30,11 +36,11 @@ export const getSpeciesInfo = async (req, res) => {
 
 export const getTemplate = async (req, res) => {
     try {
-        const { TypeID } = req.params;
-        const buffer = await templateService.generateTemplateByType(TypeID);
+        const { typeId } = req.query;
+        const buffer = await templateService.generateTemplateByType(typeId);
 
         res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        res.setHeader("Content-Disposition", `attachment; filename="template_type_${TypeID}.xlsx"`);
+        res.setHeader("Content-Disposition", `attachment; filename="template_type_${typeId}.xlsx"`);
         res.send(buffer);
     } catch (err) {
         if (err.message === "TYPE_NOT_EXIST_OR_HAS_NO_PROPERTIES") {
@@ -48,10 +54,15 @@ export const getTemplate = async (req, res) => {
 
 export const importExcel = async (req, res) => {
     try {
-        const { TypeID } = req.params;
+        const { typeId } = req.query;
         const fileBuffer = req.file.buffer;
 
-        await importService.importByTypeFromExcel(TypeID, fileBuffer);
+        if (!typeId) {
+            return res.status(400).json({ message: "Thiếu typeId!"});
+        };
+
+
+        await importService.importByTypeFromExcel(typeId, fileBuffer);
 
         res.json({ message: "Import thành công!" });
     } catch (err) {

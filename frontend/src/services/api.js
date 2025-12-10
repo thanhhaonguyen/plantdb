@@ -24,7 +24,33 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    return Promise.reject(error);
+    const status = error.response?.status;
+    const message =
+      error.response?.data?.message ||
+      error.message ||
+      "Lỗi không xác định từ server";
+    
+    // 401: Hết hạn đăng nhập
+    if (status === 401) {
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+    }
+
+    // 403: Không có quyền
+    if (status === 403) {
+      console.warn("Không có quyền truy cập!");
+    }
+
+    // 500: Lỗi server
+    if (status >= 500){
+      console.error("Lỗi hệ thống: ", message);
+    }
+
+    return Promise.reject({
+      status,
+      message,
+      raw: error
+    });
   }
 );
 
