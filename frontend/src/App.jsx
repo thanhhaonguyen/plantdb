@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Bug from './pages/bug';
 import GroupsListPage from './pages/groupsListPage';
+import GetTemplate from './pages/addNewSpecies/getTemplatePage';
 
 export default function App() {
     return (
@@ -27,6 +28,8 @@ export default function App() {
                     */}
                     
                     <Route path='/' element={<Navigate to="/species-type/1" replace />} />
+
+                    <Route path='/get-template' element={<GetTemplate />} />
 
                     <Route path='/groups' element={<GroupsListPage />} />
                     <Route path='/bug' element={<Bug />} />

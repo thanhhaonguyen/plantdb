@@ -4,6 +4,9 @@ import * as propertiesRepository from "../../repository/properties.repository.js
 
 export const generateTemplateByType = async (TypeID) => {
     const properties = await propertiesRepository.getAllPropertiesByTypeId(TypeID);
+
+    const typeName = properties[0].PlantType.name;
+
     if (!properties || properties.length === 0){
         throw new Error ("TYPE_NOT_EXIST_OR_HAS_NO_PROPERTIES");
     }
@@ -16,5 +19,5 @@ export const generateTemplateByType = async (TypeID) => {
         }
     }
 
-    return generateTemplateExcel(properties, enumMap);
+    return generateTemplateExcel(properties, enumMap, typeName);
 };

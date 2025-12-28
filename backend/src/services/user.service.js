@@ -1,8 +1,10 @@
 import * as userRepository from '../repository/user.repository.js';
 import jwt from "jsonwebtoken";
 import bcrypt from  "bcrypt";
+import { CONFIG } from '../constants/index.js';
 
 const SECRET_KEY = process.env.SECRET_KEY;
+const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY
 
 const checkIfExists = async (field, value) => {
     const existing = await userRepository.findOneByField(field, value);
@@ -28,8 +30,15 @@ export const login = async ({username, password}) => {
     const token = jwt.sign(
         {id: user.id, role: user.role},
         SECRET_KEY,
-        {expiresIn: "1d"}
+        {expiresIn: CONFIG.TOKEN_EXPIRE_TIME}
     );
 
-    return {token, user};
+    const refreshToken = jwt.sign(
+        {id: user.id, role: user.role},
+        REFRESH_SECRET_KEY,
+        {expiresIn: CONFIG.REFRESH_TOKEN_EXPRITE}
+    );
+
+
+    return {token, refreshToken, user};
 }

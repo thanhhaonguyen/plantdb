@@ -21,3 +21,7 @@ export const getAllPlantTypeByGroupId = async (GroupID, limit, offset) => {
         }
     }
 };
+
+export const createPlantType = async (typeName, GroupID) => {
+    return await PlantType.create({typeName, GroupID});
+}

@@ -1,4 +1,6 @@
 import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import sequelize from "./src/config/db.js";
@@ -7,7 +9,6 @@ import plantTypeRroutes from "./src/routes/plantType.route.js";
 import userRoutes from "./src/routes/user.route.js";
 import speciesRoutes from "./src/routes/species.route.js"
 import propertiesRoutes from "./src/routes/properties.routes.js";
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,7 +18,8 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN || "", // Cho phép frontend truy cập
   credentials: true, // Cho phép gửi cookies và headers xác thực
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Disposition']
 }));
 
 app.use(express.json());
