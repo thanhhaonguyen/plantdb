@@ -15,7 +15,7 @@ export default function UploadContent(){
             <div>
                 <h1>Hướng dẫn upload dữ liệu từ excel</h1>
                 <p>Dữ liệu phải có cấu trúc như sau:</p>
-                <img src="https://analyse-it.com/docs/user-guide/images/datasetlayout.png" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/V%C3%AD_d%E1%BB%A5.jpg" />
             </div>
             <div>
                 <input type="file" accept=".xlsx, .xls" onChange={handleUpload}/>
