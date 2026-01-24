@@ -6,7 +6,7 @@ export const findInvalidEnumValues = (rows, enumMap) => {
     const errors = [];
 
     for (const [colName, validValues] of Object.entries(enumMap)) {
-        const values = [...new Set(rows.map(r => r[colName]).filter(v => v != null))];
+        const values = [...new Set(rows.map(r => r[colName]).filter(v => v != null && v.toString().trim() !== ""))];
         const invalid = values.filter(v => !validValues.includes(v));
 
         if (invalid.length > 0) {
