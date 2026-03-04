@@ -64,6 +64,14 @@ export const UserMenu = ({ user, onLogout }) => {
                 </MenuItem>
                 <MenuItem>
                     <a
+                        href="/get-template"
+                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-lime-50 data-focus:text-green-700 data-focus:outline-hidden"
+                    >
+                        Thêm giống cây
+                    </a>
+                </MenuItem>
+                <MenuItem>
+                    <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-lime-50 data-focus:text-green-700 data-focus:outline-hidden"
                     >

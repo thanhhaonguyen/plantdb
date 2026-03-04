@@ -63,7 +63,8 @@ export const importExcel = async (req, res) => {
         };
 
 
-        await importService.importByTypeFromExcel(typeId, fileBuffer);
+        const parsedTypeId = Number(typeId);
+        await importService.importByTypeFromExcel(parsedTypeId, fileBuffer);
 
         res.json({ message: MESSAGE.IMPORT_SUCCESSFUL });
     } catch (err) {

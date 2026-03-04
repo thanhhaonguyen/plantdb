@@ -5,10 +5,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://plantdb-api.lab.io
 
 // Tạo instance axios với cấu hình mặc định
 const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: API_BASE_URL
 });
 
 // Interceptor để thêm token vào header nếu có

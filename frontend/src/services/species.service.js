@@ -1,5 +1,5 @@
 import api from "./api";
-import { getSpeciesAPI, getTemplateAPI } from "./config.service";
+import { getSpeciesAPI, getTemplateAPI, importExcelAPI } from "./config.service";
 
 export const getSpeciesInformation = async (speciesId) => {
     const response = await api.get(`${getSpeciesAPI}/${speciesId}`);
@@ -29,4 +29,18 @@ export const getTemplate = async (typeId) => {
         data: response.data,
         headers: response.headers
     };
+}
+
+export const importExcel = async (typeId, file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const response = await api.post(
+        importExcelAPI,
+        formData,
+        {
+            params: {typeId}
+        }
+    )
+    
+    return response.data;
 }
