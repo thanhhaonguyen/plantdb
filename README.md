@@ -12,14 +12,14 @@
 ### Bước 1: Clone repository
 
 ```bash
-git clone https://gitlab.mypodsoftware.io.vn/plant-apps/plantdb.git
+git clone https://github.com/Thanh-Hao-Nguyen/plantdb.git
 ```
 
 ### Bước 2: Checkout sang nhánh
 
 ```bash
 cd PlantDB
-git checkout feature/backend-excel-import
+git checkout feature/frontend-excel-import
 ```
 
 ## 2. Cấu hình biến môi trường
