@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { toast } from "react-toastify";
 
 export default function LoginForm() {
@@ -18,7 +18,7 @@ export default function LoginForm() {
     };
 
     try {
-      const res = await axios.post("/api/user/login", {
+      const res = await api.post("/api/user/login", {
         username,
         password,
       });
@@ -54,7 +54,7 @@ export default function LoginForm() {
 
     try {
       {/*
-      const res = await axios.post("/api/user/register", {
+      const res = await api.post("/api/user/register", {
         username,
         email,
         password,
