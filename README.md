@@ -14,11 +14,10 @@
 git clone https://github.com/thanhhaonguyen/plantdb
 ```
 
-### Bước 2: Checkout sang nhánh
+### Bước 2: Mở thư mục dự án
 
 ```bash
 cd PlantDB
-git checkout feature/frontend-excel-import
 ```
 
 ## 2. Cấu hình biến môi trường
