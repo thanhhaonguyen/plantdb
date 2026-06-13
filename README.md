@@ -4,7 +4,6 @@
 
 - Node.js
 - npm
-- Git
 - Database (MySQL)
 
 ## 1. Clone dự án về máy
@@ -12,7 +11,7 @@
 ### Bước 1: Clone repository
 
 ```bash
-git clone https://github.com/Thanh-Hao-Nguyen/plantdb.git
+git clone https://github.com/thanhhaonguyen/plantdb
 ```
 
 ### Bước 2: Checkout sang nhánh
