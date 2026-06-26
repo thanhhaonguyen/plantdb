@@ -22,12 +22,12 @@ export default function App() {
                 <NavBar />
                 <Routes>
 
-                    {/* 
-                    Tạm thời điều hướng trang chủ là danh sách giống cây đậu
                     <Route path='/' element={<Home />} /> 
-                    */}
                     
+                    {/*
+                    Tắt điều hướng trang chủ thành đậu
                     <Route path='/' element={<Navigate to="/species-type/1" replace />} />
+                    */}
 
                     <Route path='/get-template' element={<GetTemplate />} />
 
@@ -35,7 +35,6 @@ export default function App() {
                     <Route path='/bug' element={<Bug />} />
                     <Route path='/group/:groupID' element={<PlantTypePage />} />
                     <Route path='/species-type/:typeID' element={<SpeciesListPage />} />
-                    {/* <Route path='/species/:speciesID' element={<SpeciesPage />} /> */}
                     <Route path='/login' element={<Login />} />
                     <Route path='/species/:speciesID' element={<SpeciesPage />} />
 

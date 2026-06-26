@@ -36,7 +36,7 @@ export const UserMenu = ({ user, onLogout }) => {
                 <img
                     alt=''
                     className="size-8 rounded-full bg-transparent outline outline-2 -outline-offset-1 outline-white hover:outline-green-300 transition-all"
-                    src='https://icons.veryicon.com/png/o/internet--web/web-interface-flat/6606-male-user.png'
+                    src='https://cdn-icons-png.flaticon.com/512/4140/4140037.png'
                 />
             </MenuButton>
             
